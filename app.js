@@ -16,6 +16,11 @@ hbs.registerHelper('upperCase', (text) => {
 	return text.toUpperCase()	
 })
 
+app.use((req, res, next) => {
+	console.log(`LOG: ${new Date().getYear()+1900}`);	
+	next();
+})
+
 app.get('/', async  (req, res) => {
 	res.send('DenmeChamba');
 });
@@ -30,9 +35,7 @@ app.get('/about', async  (req, res) => {
 
 app.get('/contact', async  (req, res) => {
 	res.render('contact.hbs',{
-		title:'Contacto',
-		
-
+		title:'Contacto'
 	})
 });
 
